@@ -43,7 +43,24 @@
 
   @if(resultados.length > 0) {
   <h2>Resultado</h2>
-  <h4>Data: {{ dataResultado | date : "dd/MM/YYYY HH:mm:ss" }}</h4>
+	<div class="result-titles">
+		<div class="result-item">
+			<h4>Data:</h4>
+			<span>{{ dataResultado | date : "dd/MM/YYYY HH:mm:ss" }}</span>
+		</div>
+		<div class="result-item">
+			<h4>Produto Desejado:</h4>
+			<span>{{
+				resultadoProdutoDesejado == ConcentracaoCloroDesejadaCtrl.AGUA_SANITARIA
+					? "Água Sanitária(2%)"
+					: "Cloro(3.9%)"
+			}}</span>
+		</div>
+		<div class="result-item">
+			<h4>Concentração Cloro Matéria Prima:</h4>
+			<span>{{ resultadoConcentracaoCloroMateriaPrima }}%</span>
+		</div>
+	</div>
   <ul class="resultados">
     @for (resultadoTanque of resultados; track $index) {
     <li>
