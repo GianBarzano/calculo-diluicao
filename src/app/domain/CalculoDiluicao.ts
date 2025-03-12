@@ -16,14 +16,14 @@ export class CalculoDiluicao {
 
   /**
    * Arredonda o valor para 100 litros
-   * Ex: 1150 arredonda para 1100.
-   *     1149 arredonda para 1100
+   * Ex: 1110 arredonda para 1100.
+   *     1111 arredonda para 1200
    * @param valor
    */
   private _arredondarValor(valor: number): number {
     const restoDivisao = valor % 100;
 
-    if (restoDivisao < 50) {
+    if (restoDivisao < 11) {
       return valor - restoDivisao;
     }
 
