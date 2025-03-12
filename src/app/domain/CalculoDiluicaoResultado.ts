@@ -1,7 +1,9 @@
-import { Tanque } from './Tanque';
+import { CalculoDiluicaoResultadoTanque } from './CalculoDiluicaoResultadoTanque';
+import { ConcentracaoCloroDesejada } from './ConcentracaoCloroDesejada';
 
 export interface CalculoDiluicaoResultado {
-  tanque: Tanque;
-  volumeAgua: number;
-  volumeMateriaPrima: number;
+  data: Date;
+  concentracaoCloroMateriaPrima: number;
+  concentracaoCloroDesejada: ConcentracaoCloroDesejada;
+  resultadoTanqueList: CalculoDiluicaoResultadoTanque[];
 }

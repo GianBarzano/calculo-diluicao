@@ -1,4 +1,5 @@
 import { CalculoDiluicaoResultado } from './CalculoDiluicaoResultado';
+import { CalculoDiluicaoResultadoTanque } from './CalculoDiluicaoResultadoTanque';
 import { ConcentracaoCloroDesejada } from './ConcentracaoCloroDesejada';
 import { Tanque } from './Tanque';
 
@@ -39,7 +40,9 @@ export class CalculoDiluicao {
    * @param tanque
    * @returns
    */
-  private _calcularValorParaTanque(tanque: Tanque): CalculoDiluicaoResultado {
+  private _calcularValorParaTanque(
+    tanque: Tanque
+  ): CalculoDiluicaoResultadoTanque {
     // Aplica fórmula V1 = (C2 * V2) / C1
     const volumeMateriaPrima =
       (this._concentracaoCloroDesejada * tanque) /
@@ -48,7 +51,7 @@ export class CalculoDiluicao {
     const volumeMateriaPrimaArredondada =
       this._arredondarValor(volumeMateriaPrima);
 
-    const resultadoTanque = <CalculoDiluicaoResultado>{
+    const resultadoTanque = <CalculoDiluicaoResultadoTanque>{
       tanque,
       volumeMateriaPrima: volumeMateriaPrimaArredondada,
       volumeAgua: tanque - volumeMateriaPrimaArredondada,
@@ -57,7 +60,14 @@ export class CalculoDiluicao {
     return resultadoTanque;
   }
 
-  public calcular(): CalculoDiluicaoResultado[] {
-    return this._tanques.map((tanque) => this._calcularValorParaTanque(tanque));
+  public calcular(): CalculoDiluicaoResultado {
+    return <CalculoDiluicaoResultado>{
+      data: new Date(),
+      concentracaoCloroMateriaPrima: this._concentracaoCloroMateriaPrima,
+      concentracaoCloroDesejada: this._concentracaoCloroDesejada,
+      resultadoTanqueList: this._tanques.map((tanque) =>
+        this._calcularValorParaTanque(tanque)
+      ),
+    };
   }
 }

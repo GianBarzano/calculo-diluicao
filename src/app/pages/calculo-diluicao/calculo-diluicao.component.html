@@ -41,28 +41,29 @@
   </div>
   <button (click)="onBtnCalcularDiluicaoClick()">Calcular Diluição</button>
 
-  @if(resultados.length > 0) {
+  @if(resultado) {
   <h2>Resultado</h2>
-	<div class="result-titles">
-		<div class="result-item">
-			<h4>Data:</h4>
-			<span>{{ dataResultado | date : "dd/MM/YYYY HH:mm:ss" }}</span>
-		</div>
-		<div class="result-item">
-			<h4>Produto Desejado:</h4>
-			<span>{{
-				resultadoProdutoDesejado == ConcentracaoCloroDesejadaCtrl.AGUA_SANITARIA
-					? "Água Sanitária(2%)"
-					: "Cloro(3.9%)"
-			}}</span>
-		</div>
-		<div class="result-item">
-			<h4>Concentração Cloro Matéria Prima:</h4>
-			<span>{{ resultadoConcentracaoCloroMateriaPrima }}%</span>
-		</div>
-	</div>
+  <div class="result-titles">
+    <div class="result-item">
+      <h4>Data:</h4>
+      <span>{{ resultado.data | date : "dd/MM/YYYY HH:mm:ss" }}</span>
+    </div>
+    <div class="result-item">
+      <h4>Concentração Cloro Matéria Prima:</h4>
+      <span>{{ resultado.concentracaoCloroMateriaPrima }}%</span>
+    </div>
+    <div class="result-item">
+      <h4>Produto Desejado:</h4>
+      <span>{{
+        resultado.concentracaoCloroDesejada ==
+        ConcentracaoCloroDesejadaCtrl.AGUA_SANITARIA
+          ? "Água Sanitária(2%)"
+          : "Cloro(3.9%)"
+      }}</span>
+    </div>
+  </div>
   <ul class="resultados">
-    @for (resultadoTanque of resultados; track $index) {
+    @for (resultadoTanque of resultado.resultadoTanqueList; track $index) {
     <li>
       <p>
         <strong>Tanque: </strong

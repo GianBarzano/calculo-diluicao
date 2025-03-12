@@ -25,10 +25,7 @@ export class CalculoDiluicaoComponent {
       VINTE: true,
     },
   };
-  public resultados: CalculoDiluicaoResultado[] = [];
-  public dataResultado?: Date;
-	public resultadoProdutoDesejado?: ConcentracaoCloroDesejada;
-	public resultadoConcentracaoCloroMateriaPrima?: number;
+  public resultado?: CalculoDiluicaoResultado;
 
   constructor(private _alertServiceService: AlertServiceService) {}
 
@@ -72,9 +69,6 @@ export class CalculoDiluicaoComponent {
       this.form.concentracaoCloroDesejada,
       tanques
     );
-    this.resultados = calculoDiluicao.calcular();
-    this.dataResultado = new Date();
-		this.resultadoProdutoDesejado = this.form.concentracaoCloroDesejada;
-		this.resultadoConcentracaoCloroMateriaPrima = this.form.concentracaoCloroMateriaPrima;
+    this.resultado = calculoDiluicao.calcular();
   }
 }
