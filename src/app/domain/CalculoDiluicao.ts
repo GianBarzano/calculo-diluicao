@@ -15,19 +15,19 @@ export class CalculoDiluicao {
   ) {}
 
   /**
-   * Arredonda o valor para 50 litros
-   * Ex: 1123 arredonda para 1100.
-   *     1125 arredonda para 1150
+   * Arredonda o valor para 100 litros
+   * Ex: 1150 arredonda para 1100.
+   *     1149 arredonda para 1100
    * @param valor
    */
   private _arredondarValor(valor: number): number {
-    const restoDivisao50 = valor % 50;
+    const restoDivisao50 = valor % 100;
 
-    if (restoDivisao50 < 25) {
+    if (restoDivisao50 < 100) {
       return valor - restoDivisao50;
     }
 
-    return valor - restoDivisao50 + 50;
+    return valor - restoDivisao50 + 100;
   }
 
   /**
