@@ -21,13 +21,13 @@ export class CalculoDiluicao {
    * @param valor
    */
   private _arredondarValor(valor: number): number {
-    const restoDivisao50 = valor % 100;
+    const restoDivisao = valor % 100;
 
-    if (restoDivisao50 < 100) {
-      return valor - restoDivisao50;
+    if (restoDivisao < 50) {
+      return valor - restoDivisao;
     }
 
-    return valor - restoDivisao50 + 100;
+    return valor - restoDivisao + 100;
   }
 
   /**
