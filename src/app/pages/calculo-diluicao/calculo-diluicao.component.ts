@@ -29,7 +29,7 @@ export class CalculoDiluicaoComponent {
 
   constructor(private _alertServiceService: AlertServiceService) {}
 
-  public onBtnCalcularDiluicaoClick() {
+  public onBtnCalcularClick() {
     if (this.form.concentracaoCloroMateriaPrima <= 0) {
       this._alertServiceService.warning({
         message: 'Por favor, informe a concentração de cloro da matéria prima!',
