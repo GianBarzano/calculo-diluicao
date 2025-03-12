@@ -3,11 +3,11 @@ import { CalculoDiluicaoComponent } from './pages/calculo-diluicao/calculo-dilui
 
 export const routes: Routes = [
   {
-    path: 'calculo-diluicao',
+    path: '',
     component: CalculoDiluicaoComponent,
   },
 	{
 		path: '**',
-		redirectTo: 'calculo-diluicao'
+		redirectTo: ''
 	}
 ];
