@@ -1,0 +1,66 @@
+<main>
+  <h1>Cálculo de diluição</h1>
+
+  <div class="form-item">
+    <label class="form-item__label">Concentração Cloro Matéria Prima(%):</label>
+    <input type="number" [(ngModel)]="form.concentracaoCloroMateriaPrima" />
+  </div>
+  <div class="form-item">
+    <label class="form-item__label">Produto desejado:</label>
+    <input
+      type="radio"
+      name="produtoDesejado"
+      id="produtoDesejadoAguaSanitaria"
+      [(ngModel)]="form.concentracaoCloroDesejada"
+      [value]="ConcentracaoCloroDesejadaCtrl.AGUA_SANITARIA"
+    />
+    <label for="produtoDesejadoAguaSanitaria">Água Sanitária(2%)</label>
+    <input
+      type="radio"
+      name="produtoDesejado"
+      id="produtoDesejadoAguaCloro"
+      [(ngModel)]="form.concentracaoCloroDesejada"
+      [value]="ConcentracaoCloroDesejadaCtrl.CLORO"
+    />
+    <label for="produtoDesejadoAguaCloro">Cloro(3.9%)</label>
+  </div>
+  <div class="form-item">
+    <label class="form-item__label">Tanques de Diluição:</label>
+    <input type="checkbox" [(ngModel)]="form.tanques.CINCO" id="tanque-5" />
+    <label for="tanque-5">5.000L</label>
+
+    <input
+      type="checkbox"
+      [(ngModel)]="form.tanques.DESESSETE"
+      id="tanque-17"
+    />
+    <label for="tanque-17">17.000L</label>
+
+    <input type="checkbox" [(ngModel)]="form.tanques.VINTE" id="tanque-20" />
+    <label for="tanque-20">20.000L</label>
+  </div>
+  <button (click)="onBtnCalcularDiluicaoClick()">Calcular Diluição</button>
+
+  @if(resultados.length > 0) {
+  <h2>Resultado</h2>
+  <h4>Data: {{ dataResultado | date : "dd/MM/YYYY HH:mm:ss" }}</h4>
+  <ul class="resultados">
+    @for (resultadoTanque of resultados; track $index) {
+    <li>
+      <p>
+        <strong>Tanque: </strong
+        ><span>{{ resultadoTanque.tanque | number }}L</span>
+      </p>
+      <p>
+        <strong>Volume de matéria prima: </strong
+        ><span>{{ resultadoTanque.volumeMateriaPrima | number }}L</span>
+      </p>
+      <p>
+        <strong>Volume de água: </strong
+        ><span>{{ resultadoTanque.volumeAgua | number }}L</span>
+      </p>
+    </li>
+    }
+  </ul>
+  }
+</main>
