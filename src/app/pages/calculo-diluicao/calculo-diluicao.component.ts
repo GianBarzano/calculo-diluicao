@@ -95,7 +95,6 @@ export class CalculoDiluicaoComponent {
     const prObterElemento = new Promise<HTMLElement>((res, rej) => {
       const intervalSearchEl = setInterval(() => {
         const data = document.getElementById('resultado');
-        console.log('interval data', data);
         if (data != null) {
           clearInterval(intervalSearchEl);
           res(data);
