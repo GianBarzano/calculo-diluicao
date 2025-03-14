@@ -113,20 +113,7 @@ export class CalculoDiluicaoComponent {
       let position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 			const fileName = `calculo_manipulacao_${this._formatFileDate(this.resultado!.data)}.pdf`;
-			// Abrir nova aba com o PDF
-			const dataUrl = pdf.output("dataurlstring", {filename: fileName});
-  		window.open(dataUrl, '_blank');
-// 			const pdfBlob = pdf.output("blob");
-// 			const pdfFile = new File([pdfBlob], fileName);
-// 
-// 			try {
-// 				await navigator.share({
-// 					title: 'Cálculo de manipulação',
-// 					files: [pdfFile]
-// 				});
-// 			} catch (error) {
-// 				pdf.save(fileName); // Generated PDF	
-// 			}
+			pdf.save(fileName); // Generated PDF	
     });
   }
 
