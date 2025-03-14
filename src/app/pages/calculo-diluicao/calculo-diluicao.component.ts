@@ -104,8 +104,8 @@ export class CalculoDiluicaoComponent {
     });
 
     const data = await prObterElemento;
-    html2canvas(data).then((canvas) => {
-      const imgWidth = 80;
+    html2canvas(data).then(async (canvas) => {
+      const imgWidth = 100;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
       const contentDataURL = canvas.toDataURL('image/png');
@@ -113,9 +113,19 @@ export class CalculoDiluicaoComponent {
 
       let position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save(
-        `calculo_manipulacao_${this._formatFileDate(this.resultado!.data)}.pdf`
-      ); // Generated PDF
+			const fileName = `calculo_manipulacao_${this._formatFileDate(this.resultado!.data)}.pdf`;
+			const pdfBlob = pdf.output("blob");
+			const pdfFile = new File([pdfBlob], fileName);
+
+			if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+				await navigator.share({
+					title: 'Cálculo de manipulação',
+					files: [pdfFile]
+				});
+			} else {
+				console.log("pdf gerado")
+				pdf.save(fileName); // Generated PDF
+			}
     });
   }
 
