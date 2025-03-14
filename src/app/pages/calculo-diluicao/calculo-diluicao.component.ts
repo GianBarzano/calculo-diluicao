@@ -116,14 +116,13 @@ export class CalculoDiluicaoComponent {
 			const pdfBlob = pdf.output("blob");
 			const pdfFile = new File([pdfBlob], fileName);
 
-			if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+			try {
 				await navigator.share({
 					title: 'Cálculo de manipulação',
 					files: [pdfFile]
 				});
-			} else {
-				console.log("pdf gerado")
-				pdf.save(fileName); // Generated PDF
+			} catch (error) {
+				pdf.save(fileName); // Generated PDF	
 			}
     });
   }
