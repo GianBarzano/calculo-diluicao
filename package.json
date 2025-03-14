@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-		"github-build": "ng build --configuration production --base-href 'https://gianbarzano.github.io/calculo-manipulacao/'"
+    "github-build": "ng build --configuration production --base-href 'https://gianbarzano.github.io/calculo-manipulacao/'"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +19,8 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

@@ -42,43 +42,45 @@
   <button (click)="onBtnCalcularClick()">Calcular</button>
 
   @if(resultado) {
-  <h2>Resultado</h2>
-  <div class="result-titles">
-    <div class="result-item">
-      <h4>Data:</h4>
-      <span>{{ resultado.data | date : "dd/MM/YYYY HH:mm:ss" }}</span>
-    </div>
-    <div class="result-item">
-      <h4>Concentração Cloro Matéria Prima:</h4>
-      <span>{{ resultado.concentracaoCloroMateriaPrima }}%</span>
-    </div>
-    <div class="result-item">
-      <h4>Produto Desejado:</h4>
-      <span>{{
-        resultado.concentracaoCloroDesejada ==
-        ConcentracaoCloroDesejadaCtrl.AGUA_SANITARIA
-          ? "Água Sanitária(2%)"
-          : "Cloro(3.9%)"
-      }}</span>
-    </div>
-  </div>
-  <ul class="resultados">
-    @for (resultadoTanque of resultado.resultadoTanqueList; track $index) {
-    <li>
-      <p>
-        <strong>Tanque: </strong
-        ><span>{{ resultadoTanque.tanque | number }}L</span>
-      </p>
-      <p>
-        <strong>Volume de matéria prima: </strong
-        ><span>{{ resultadoTanque.volumeMateriaPrima | number }}L</span>
-      </p>
-      <p>
-        <strong>Volume de água: </strong
-        ><span>{{ resultadoTanque.volumeAgua | number }}L</span>
-      </p>
-    </li>
-    }
-  </ul>
+	<div id="resultado">
+		<h2>Calculo de manipulação</h2>
+		<div class="result-titles">
+			<div class="result-item">
+				<h4>Data:</h4>
+				<span>{{ resultado.data | date : "dd/MM/YYYY HH:mm:ss" }}</span>
+			</div>
+			<div class="result-item">
+				<h4>Concentração Cloro Matéria Prima:</h4>
+				<span>{{ resultado.concentracaoCloroMateriaPrima }}%</span>
+			</div>
+			<div class="result-item">
+				<h4>Produto Desejado:</h4>
+				<span>{{
+					resultado.concentracaoCloroDesejada ==
+					ConcentracaoCloroDesejadaCtrl.AGUA_SANITARIA
+						? "Água Sanitária(2%)"
+						: "Cloro(3.9%)"
+				}}</span>
+			</div>
+		</div>
+		<ul class="resultados">
+			@for (resultadoTanque of resultado.resultadoTanqueList; track $index) {
+			<li>
+				<p>
+					<strong>Tanque: </strong
+					><span>{{ resultadoTanque.tanque | number }}L</span>
+				</p>
+				<p>
+					<strong>Volume de matéria prima: </strong
+					><span>{{ resultadoTanque.volumeMateriaPrima | number }}L</span>
+				</p>
+				<p>
+					<strong>Volume de água: </strong
+					><span>{{ resultadoTanque.volumeAgua | number }}L</span>
+				</p>
+			</li>
+			}
+		</ul>
+	</div>
   }
 </main>
